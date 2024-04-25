@@ -27,7 +27,7 @@ router.get('/json', async function(req, res, next) {
 
 router.post('/json', async (req, res) => {
   let my_file = await s3.getObject({
-    Bucket: 'Bucket_Name',
+    Bucket: process.env.CYCLIC_BUCKET_NAME,
     Key: "dishes.json"
   }).promise()
   const result = JSON.parse(my_file.Body);
@@ -46,7 +46,7 @@ router.post('/json', async (req, res) => {
 
 router.get("/dishes", async (req, res, next) => {
   let my_file = await s3.getObject({
-    Bucket: "Bucket name",
+    Bucket: process.env.CYCLIC_BUCKET_NAME,
     Key: "dishes.json",
   }).promise()
   const result = JSON.parse(my_file.Body);
@@ -66,7 +66,7 @@ router.get("/dishes", async (req, res, next) => {
 router.post("/dishes", async (req, res, next) => {
   try {
     let my_file = await s3.getObject({
-      Bucket: "cyclic-pear-wandering-sturgeon-eu-west-2",
+      Bucket: process.env.CYCLIC_BUCKET_NAME,
       Key: "dishes.json",
     }).promise();
 
@@ -97,7 +97,7 @@ router.post("/dishes", async (req, res, next) => {
 
     await s3.putObject({
       Body: JSON.stringify(result, null, 2),
-      Bucket: "Bucket_Name",
+      Bucket: process.env.CYCLIC_BUCKET_NAME,
       Key: "dishes.json"
     }).promise();
 
@@ -116,7 +116,7 @@ router.get("/dishes/:dishKey", async (req, res, next) => {
   try {
     const dish = req.params.dishKey;
     const my_file = await s3.getObject({
-      Bucket: "Bucket_Name",
+      Bucket: process.env.CYCLIC_BUCKET_NAME,
       Key: "dishes.json",
     }).promise();
 
