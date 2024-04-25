@@ -8,7 +8,6 @@
   "dependencies": {
     "@cyclic.sh/dynamodb": "^0.0.35",
     "aws-sdk": "^2.1606.0",
-    "body-parser": "^1.20.2",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "dotenv": "^16.4.5",
